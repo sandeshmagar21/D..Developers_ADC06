@@ -44,28 +44,43 @@ def Up_Del_viw_by_ID(request,Id):
         obj5.save()
         return JsonResponse({"MESSAGE":"Your request by ID is successfully Updated"})
 
+
+# @csrf_exempt
+# def paginatoon(request, Id):
+#     MembDetails=memberShipPlan.objects.all()
+#     Member=None
+    
+#     if request.method == "GET":
+
+#         Slice=(Id-1) * 4
+#         end=(Id-1) * 4
+#         max_len=Id * 4
+#         RawData=MembDetails.count()
+
+#         while end < RawData and end < max_len:
+#             Member=MembDetails[Slice:end+1]
+#             end=end+1
+
+#         Listing=list(Member.values("trainerName","classesName","price","time"))
+#         ob={"PremiumMemberClassDetail":Listing}
+#         return JsonResponse(ob)
+
 @csrf_exempt
-def paginaton(request, Id):
+def pagination(request, Id):
     MembDetails=memberShipPlan.objects.all()
-      
+    # Member=None
+    
     if request.method == "GET":
 
-        SliceFirst=(Id-1) * 4
-        EndOfSlice=(Id-1) * 4
+        Slice=(Id-1) * 4
+        end=(Id-1) * 4
         max_len=Id * 4
-        data_avilbl=MembDetails.count()
+        RawData=MembDetails.count()
 
-        while EndOfSlice < data_avilbl and EndOfSlice < max_len:
-            MembDetails_slice=MembDetails[SliceFirst:EndOfSlice+1]
-            EndOfSlice=EndOfSlice+1
+        while end < RawData and end < max_len:
+            Member=MembDetails[Slice:end+1]
+            end=end+1
 
-        List=list(MembDetails_slice.values("trainerName","classesName","price","time"))
-        obj={"PremiumMemberClassDetail":List}
-        return JsonResponse(obj)
-
-
-
-
-
-
-
+        Listing=list(Member.values("trainerName","classesName","price","time"))
+        ob={"PremiumMemberClassDetail":Listing}
+        return JsonResponse(ob)
