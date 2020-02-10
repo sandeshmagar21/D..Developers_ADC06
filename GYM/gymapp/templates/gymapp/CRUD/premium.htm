@@ -1,0 +1,67 @@
+{% extends 'gymapp/NavBar/base.htm' %}
+
+<!-- For CRUD Operations -->
+{% block content %}
+<div class="card-columns" >
+    {% for list in shelf %}
+    <div class="card" style="background-color:rgb(88, 88, 44); width: 25rem;">
+  <img class="card-img-top" src="{{list.picture.url }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ list.workoutname }}</h5>
+    <p class="alert alert-success" role="alert">{{ list.workoutdesc }}</p>
+   <div class="card-footer bg-transparent border-dark">
+   <p class="card-title badge badge-light alert-success">{{list.email}}</p>
+   <center>
+       <a href="update/{{list.id}}" class="btn btn-dark" id = '{{list.id}}'>Update</a>
+       <a href="delete/{{list.id}}" class="btn btn-dark" id = '{{list.id}}'>Delete</a> 
+       <!-- <a href="{{list.picture.url}}" class="btn btn-dark" id = '{{list.id}}' download>Download</a>  -->
+       <a href="{{list.picture.url}}" class="btn btn-dark" download>Download</a> 
+       
+    </center>
+    </div>
+  </div>
+</div>
+    {% endfor %}
+</div>
+
+
+<!-- For Data showing from Search -->
+<div>
+  {% if messages %}
+  <ul class="alert alert-primary">
+    {% for s in messages %}
+      <li style ="color:red"> {{ s }}</li>
+    {% endfor%}
+  </ul>
+  {% endif%}
+</div><br> 
+
+<div style="color:blue">
+{% if sac %}
+   {% for s in sac %}
+<center>
+   <table border="8px" width="400px" class=" table table-dark table-borderless">
+     <tr>
+        <td>Workout Name</td>
+        <td>{{ s.workoutname }}</td>
+     </tr> 
+     <tr>
+      <td>Image</td>
+      <td> <img src = "{{s.picture.url}}" height="200px" width="200px" > </td>
+     </tr>  
+     <tr>
+      <td>Email</td>
+      <td>{{ s.email }}</td>
+     </tr> 
+     <td> Workout Description </td>
+      <td>{{ s.workoutdesc }}</td>
+     </tr>  
+   </table> 
+   <hr>
+{% endfor %}
+{% endif %}
+</center>
+</div>
+
+{% endblock %}
+
