@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Course Details </title>
+</head>
+<body>
+    <h2>List of Course: </h2> 
+    {% for list in store %}
+    Course's Title: {{list.coursetitle}} <br><br> 
+    Course's Description: {{list.coursedesc}} <br><br>
+    Full Course: {{list.coursefull}} <br><br>
+    Uploaded by: {{list.trainer}}<br><br>
+    <hr size="5px">
+    {% empty %}
+        There is no course available right now.
+    {% endfor %}
+</body>
+</html>

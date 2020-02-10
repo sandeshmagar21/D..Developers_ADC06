@@ -1,0 +1,59 @@
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname R1
+R1(config)#int Gig0/0
+R1(config-if)#ip address 170.2.20.1 255.255.255.224
+R1(config-if)#int Se0/1/0
+R1(config-if)#ip address 170.2.20.57 255.255.255.252 
+R1(config-if)#clock rate 64000
+R1(config-if)#no shut
+
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname R2
+R2(config)#int Gig0/0
+R2(config-if)#ip address 170.2.20.33 255.255.255.240
+R2(config-if)#int Se0/1/1
+R2(config-if)#ip address 170.2.20.61 255.255.255.252 
+R2(config-if)#clock rate 64000
+R2(config-if)#int Se0/1/0
+R2(config-if)#ip address 170.2.20.58 255.255.255.252
+R2(config-if)#no shut
+
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname R3
+R3(config)#int Gig0/0
+R3(config-if)#ip address 170.2.20.49 255.255.255.248
+R3(config-if)#int Se0/0/1
+R3(config-if)#ip address  170.2.20.62 255.255.255.252
+R3(config-if)# no shut
+
+
+Enter configuration commands, one per line.  End with CNTL/Z.
+R1(config)#ip route 170.2.20.32 255.255.255.240 170.2.20.58
+R1(config)#ip route 170.2.20.48 255.255.255.248 170.2.20.58
+
+R2#en
+R2#conf t
+R2(config-if)#ip route 170.2.20.0 255.255.255.224 170.2.20.57
+R2(config)#ip route 170.2.20.48 255.255.255.248 170.2.20.62
+
+
+R3#en
+R3#conf t
+R3(config-if)#ip route 170.2.20.0 255.255.255.224 170.2.20.61 
+R3(config)#ip route 170.2.20.32 255.255.255.240 170.2.20.61
+
+
+
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname S1
+

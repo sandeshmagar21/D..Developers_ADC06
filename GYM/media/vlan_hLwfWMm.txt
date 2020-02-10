@@ -1,0 +1,98 @@
+
+S1#
+S1#
+S1#conf ter
+S1#conf terminal 
+Enter configuration commands, one per line.  End with CNTL/Z.
+S1(config)#
+S1(config)#
+S1(config)#
+S1(config)#inter
+S1(config)#interface ra
+S1(config)#interface range fa
+S1(config)#interface range fastEthernet 0/1-10
+S1(config-if-range)#des
+S1(config-if-range)#description ***FOR-ALL-STAFF***
+S1(config-if-range)#sw
+S1(config-if-range)#switchport mo
+S1(config-if-range)#switchport mode ac
+S1(config-if-range)#switchport mode access 
+S1(config-if-range)#sw
+S1(config-if-range)#switchport ac
+S1(config-if-range)#switchport access vl
+S1(config-if-range)#switchport access vlan 55
+S1(config-if-range)#
+S1(config-if-range)#
+S1(config-if-range)#exit
+S1(config)#
+S1(config)#
+S1(config)#
+S1(config)#inter
+S1(config)#interface ra
+S1(config)#interface range fa
+S1(config)#interface range fastEthernet 0/11-20
+S1(config-if-range)#des
+S1(config-if-range)#description ***FOR-STUDENT-SERVICE***
+S1(config-if-range)#
+S1(config-if-range)#sw
+S1(config-if-range)#switchport mo
+S1(config-if-range)#switchport mode ac
+S1(config-if-range)#switchport mode access 
+S1(config-if-range)#sw
+S1(config-if-range)#switchport ac
+S1(config-if-range)#switchport access vl
+S1(config-if-range)#switchport access vlan 66
+% Access VLAN does not exist. Creating vlan 66
+S1(config-if-range)#
+S1(config-if-range)#
+S1(config-if-range)#
+S1(config-if-range)#exit
+S1(config)#
+S1(config)#
+S1(config)#
+S1(config)#
+S1(config)#do show vl
+S1(config)#do show vl
+S1(config)#do show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/21, Fa0/22, Fa0/23, Fa0/24
+                                                Gig0/1, Gig0/2
+55   Staff                            active    Fa0/1, Fa0/2, Fa0/3, Fa0/4
+                                                Fa0/5, Fa0/6, Fa0/7, Fa0/8
+                                                Fa0/9, Fa0/10
+66   VLAN0066                         active    Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+55   enet  100055     1500  -      -      -        -    -        0      0
+66   enet  100066     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+ --More-- 
+
+
+
+
+
+
+
+
+S1 con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
