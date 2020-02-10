@@ -1,0 +1,30 @@
+{% extends 'gymapp/NavBar/base.htm' %}
+{% block content %}
+    <center>
+    <h1 class="text-warning" >Register Member </h1>
+    <form method = 'POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class = 'table table-dark table-borderless' style="background-color:#000000;color:#FFFF99;">
+            {% for t2field in savedhai %}
+            <tr>
+                <th>{{t2field.label}}</th>
+                <td>{{ t2field }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit"  class="btn btn-lg btn-warning ">Submit</button> <br> <br>
+        <!-- <button type="back" onclick="history.go(-1)" class="btn btn-success">Go Back</button> -->
+        <!-- <button type="back" href="{% url 'hacker' %}" class="btn btn-success">Go Back</button> -->
+       
+            <a class="" href="{% url 'access' %}">
+              <button type="submit" class="btn btn-lg btn-warning "> Go Back
+            </a>
+            </button>
+        
+        
+        
+    </form>   
+</center>
+{% endblock %}
+
+
